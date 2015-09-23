@@ -11,6 +11,8 @@ AWS_ACCESS_KEY = ''
 AWS_SECRET_KEY = ''
 AWS_REGION = ''
 
+print('Start cluster check')
+
 emrsession = Session(AWS_ACCESS_KEY, AWS_SECRET_KEY)
 emr = emrsession.client('emr', AWS_REGION)
 
@@ -29,3 +31,5 @@ if clusters['Clusters'] is not None:
         emr.terminate_job_flows(
             JobFlowIds=[cluster['Id']]
         )
+
+print('cluster check done')
